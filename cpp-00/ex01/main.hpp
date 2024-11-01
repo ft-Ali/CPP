@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:08:35 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/01 15:52:16 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:02:14 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 class Test {
 public:
     Test(void);
-    ~Test(void);
     void printColor(std::string color);
 	void printUpper(std::string str);
+    ~Test(void);
 };
 
 

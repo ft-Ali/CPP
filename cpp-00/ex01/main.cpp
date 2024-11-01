@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:06:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/01 15:56:25 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:00:18 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 
 Test::Test(void) {
-	std::cout << "Test constructor called" << std::endl;
+	std::cout << BLUE << "[Test constructor called]" << RESET << std::endl;
 	return;
 }
 
 Test::~Test(void) {
-	std::cout << "Test destructor called" << std::endl;
+	std::cout << RED << "[Test destructor called]" << RESET << std::endl;
 	return;
 }
 
 void Test::printColor(std::string color) {
 	std::cout << color << "Hello World!" << RESET << std::endl;
-	std::cout << color << "Yo la street" << RESET <<  std::endl;
 }
 void Test::printUpper(std::string str) {
 
@@ -41,7 +40,6 @@ int main(void)
 {
 	Test test;
 
-	test.printColor(RED);
 	test.printColor(CYAN);
 	test.printUpper("ceci est un test");
 	
