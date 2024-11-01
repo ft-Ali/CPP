@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:08:35 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/01 14:10:40 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:47:45 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,13 @@
 
 #include <iostream>
 #include <cctype>
+
+class Test {
+public:
+    Test(void);
+    ~Test(void);
+    void printColor(std::string color);
+};
+
 
 #endif
