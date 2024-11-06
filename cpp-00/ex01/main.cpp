@@ -6,59 +6,36 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:06:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/04 15:22:59 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:50:30 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Phonebook.hpp"
 #include "color.hpp"
-#include "main.hpp"
 
-Test::Test(void)
-{
-	std::cout << BLUE + "[Test constructor called]" << RESET << std::endl;
-	return ;
+int main() {
+    PhoneBook phonebook;
+    std::string command;
+
+    while (true) {
+        std::cout << GRY2 + "Enter command (ADD, SEARCH, EXIT): " + RESET;
+		std::cin.clear();
+        std::getline(std::cin, command);
+		if(std::cin.eof())
+			break ;
+        if (command == "ADD") {
+            phonebook.add_contact();
+        } else if (command == "SEARCH") {
+            phonebook.search_contacts();
+        } else if (command == "EXIT") {
+            break;
+        } else {
+            std::cout << "Invalid command." << std::endl;
+        }
+    }
+
+    return 0;
 }
-
-Test::~Test(void)
-{
-	std::cout << RED + "[Test destructor called]" + RESET << std::endl;
-	return ;
-}
-
-void Test::printColor(std::string color)
-{
-	std::cout << color << "Hello World!" << RESET << std::endl;
-}
-
-void Test::printSize(std::string str)
-{
-	std::cout << MAGN << str.size() << RESET;
-	std::cout << std::endl;
-	return ;
-}
-
-void Test::printUpper(std::string str)
-{
-	for (int i = 0; str[i]; i++)
-	{
-		std::cout << YLLW + (char)toupper(str[i]) << RESET;
-	}
-	std::cout << std::endl;
-	return ;
-}
-
-int	main(void)
-{
-	Test test;
-	
-	std::string name;
-	std::cout << BLUE + "Please, enter your full name: ";
-	std::getline(std::cin, name);
-	test.printSize(name);
-	std::cout << PINK + "Hello, " << name << " !" + RESET << std::endl;
-	return (0);
-}
-
 
 /*
 PhoneBook
@@ -70,7 +47,8 @@ contact, remplacez le plus ancien par celui-ci.
 • Contact
 ◦ Représente un contact dans le répertoire
 
-Au lancement du programme, le répertoire est vide et l’utilisateur peut entrer une
+Au lancement du programme,
+	le répertoire est vide et l’utilisateur peut entrer une
 commande. Le programme accepte les entrées suivantes : ADD, SEARCH et EXIT.
 • ADD
 ◦ Crée un nouveau contact et l’ajoute au répertoire.
@@ -92,7 +70,9 @@ Chaque colonne doit faire 10 caractères de long. Elles doivent être séparées
 par un pipe (’|’). Leur texte est aligné à droite. Si le texte dépasse la largeur
 de la colonne, il faut le tronquer et remplacer le dernier caractère affiché par
 un point (’.’)
-Ensuite, le programme demande à l’utilisateur d’entrer l’index du contact à afficher. Si l’index ou son format sont incorrects, gérez cela de manière pertinente.
+Ensuite,
+	le programme demande à l’utilisateur d’entrer l’index du contact à afficher. Si l’index ou son format sont incorrects,
+	gérez cela de manière pertinente.
 Sinon, affichez les informations du contact, une par ligne
 • EXIT
 ◦ Quitte le programme.

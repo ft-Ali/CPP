@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:08:35 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/04 14:18:27 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:23:25 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-# define MAIN_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-// # define RESET "\033[0m"
-// # define RED "\033[31m"
-// # define GREEN "\033[32m"
-// # define YELLOW "\033[33m"
-// # define BLUE "\033[34m"
-// # define MAGENTA "\033[35m"
-// # define CYAN "\033[36m"
-// # define WHITE "\033[37m"
 
 #include <iostream>
 #include <cstring>
+#include <iomanip>
+#include "color.hpp"
+#include "Contact.hpp"
+#include <cctype>
 
-class Test {
+class PhoneBook {
+private:
+    Contact contacts[8];
+    int contact_count;
+    int oldest_contact_index;
+	bool is_empty(const std::string& str) const;
+	bool is_valid_number(const std::string& str) const;
+	bool is_alnum(const std::string& str) const;
+
 public:
-	Test(void);
-	void printColor(std::string color);
-	void printUpper(std::string str);
-	void printSize(std::string str);
-	~Test(void);
+    PhoneBook();
+	~PhoneBook();
+    void add_contact();
+    void search_contacts() const;
+    void display_contact(int index) const;
 };
-
 
 
 #endif

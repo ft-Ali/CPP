@@ -1,15 +1,13 @@
 NAME        =   phonebook
-
 CC          =   c++
-
 FLAG        =   -std=c++98 -Wall -Wextra -Werror -pedantic -g3
 
-C_FILES     = 	main.cpp \
+# Liste des fichiers source
+C_FILES     =   main.cpp Phonebook.cpp Contact.cpp
 
+# Répertoires et fichiers objets
 OBJ_DIR     =   builds
-
 OBJS        =   $(addprefix $(OBJ_DIR)/, $(C_FILES:.cpp=.o))
-
 DEPS        =   $(OBJS:.o=.d)
 
 CYAN        =   \033[36;1m
