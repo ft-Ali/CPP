@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:41:26 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/08 15:16:28 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:39:20 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void PhoneBook::addContact() {
     
 	Contact newContact;
 	std::string input;
-
+	
 	input = isValid("Enter First Name: ", false);
 	if (!input.empty())
 		newContact.setFirstName(input);
-
+	
 	input = isValid("Enter Last Name: ", false);
 	if (!input.empty())
 		newContact.setLastName(input);
