@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:41:26 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/06 15:34:13 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:09:02 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,84 +15,80 @@
 PhoneBook::PhoneBook() : contact_count(0), oldest_contact_index(0) {
 }
 
-bool PhoneBook::is_empty(const std::string& str) const {
-    return str.empty();
+bool PhoneBook::is_empty(const std::string &str) const {
+	return (str.empty());
 }
 
-bool PhoneBook::is_alnum(const std::string& str) const {
-    for (int i = 0; str[i]; i++) {
-        if (!isalnum(str[i])) {
-            return false;
-        }
-    }
-    return true;
+bool PhoneBook::is_alnum(const std::string &str) const {
+	for (int i = 0; str[i]; i++)
+	{
+		if (!isalnum(str[i]))
+		{
+			return (false);
+		}
+	}
+	return (true);
 }
 
-bool PhoneBook::is_valid_number(const std::string& str) const {
-    for (int i = 0; str[i]; i++) {
-        if (!isdigit(str[i])) {
-            return false;
-        }
-    }
-    return true;
+bool PhoneBook::is_valid_number(const std::string &str) const {
+	for (int i = 0; str[i]; i++) {
+		if (!isdigit(str[i])) {
+			return (false);
+		}
+	}
+	return (true);
 }
 
 PhoneBook::~PhoneBook() {
 }
 
-void PhoneBook::add_contact() {
-	Contact	new_contact;
-	std::string input;
-	
-	std::cout << "Enter First Name: ";
-	std::getline(std::cin, input);
-	if(is_empty(input) || !is_alnum(input)) {
-		std::cout << "First Name is empty." << std::endl;
-		return ;
-	}
-	new_contact.set_first_name(input);
-	std::cout << "Enter Last Name: ";
-	std::getline(std::cin, input);
-	if(is_empty(input) || !is_alnum(input)) {
-		std::cout << "Last Name is empty." << std::endl;
-		return ;
-	}
-	new_contact.set_last_name(input);
-	std::cout << "Enter Nickname: ";
-	std::getline(std::cin, input);
-	if(is_empty(input) || !is_alnum(input)) {
-		std::cout << "Nickname is empty." << std::endl;
-		return ;
-	}
-	new_contact.set_nickname(input);
-	std::cout << "Enter Phone Number: ";
-	std::getline(std::cin, input);
-	if(is_empty(input) || !is_valid_number(input)) {
-		std::cout << "Phone Number is empty or no-digits." << std::endl;
-		return ;
-	}
-	new_contact.set_phone_number(input);
-	std::cout << "Enter Darkest Secret: ";
-	std::getline(std::cin, input);
-	if(is_empty(input) || !is_alnum(input)) {
-		std::cout << "Darkest Secret is empty." << std::endl;
-		return ;
-	}
-	new_contact.set_darkest_secret(input);
-	if (contact_count < 8) {
-		contacts[contact_count++] = new_contact;
-	}
-	else {
-		contacts[oldest_contact_index] = new_contact;
-		oldest_contact_index = (oldest_contact_index + 1) % 8;
-	}
-	std::cout << "Contact added successfully!" << std::endl;
+std::string PhoneBook::isValid(const std::string& prompt, bool numericOnly) {
+    std::string input;
+
+    while (true) {
+		std::cout << prompt;
+        std::getline(std::cin, input);
+		if(std::cin.eof())
+			break;
+        if (is_empty(input) ) {
+            std::cout << RED + "Input is empty. Please try again." + RESET << std::endl;
+            continue;
+        }
+        if ((numericOnly && !is_valid_number(input)) || (!numericOnly && !is_alnum(input))) {
+            std::cout << RED + "Invalid input. Please try again." + RESET << std::endl;
+            continue;
+        }
+        break;
+    }
+
+    return input;
 }
 
+void PhoneBook::add_contact() {
+    Contact new_contact;
+
+    // Saisie et validation pour chaque champ
+    new_contact.set_first_name(isValid("Enter First Name: ", false));
+    if(!new_contact.get_first_name().empty()){
+	new_contact.set_last_name(isValid("Enter Last Name: ", false));
+    new_contact.set_nickname(isValid("Enter Nickname: ", false));
+    new_contact.set_darkest_secret(isValid("Enter Darkest Secret: ", false));
+    new_contact.set_phone_number(isValid("Enter Phone Number: ", true));}
+
+    // Ajout du contact au phonebook
+    if (contact_count < 8) {
+        contacts[contact_count++] = new_contact;
+    } else {
+        contacts[oldest_contact_index] = new_contact;
+        oldest_contact_index = (oldest_contact_index + 1) % 8;
+    }
+	if(!new_contact.get_first_name().empty())
+    	std::cout << TURQ + "Contact added successfully!" + RESET << std::endl;
+}	
 
 void PhoneBook::search_contacts() const {
 	if (contact_count == 0) {
-		std::cout << "The phonebook is empty." << std::endl;
+		std::cout << RED + "The phonebook is empty." + RESET << std::endl;
 		return ;
 	}
 
@@ -103,27 +99,48 @@ void PhoneBook::search_contacts() const {
 	std::cout << std::setw(10) << "Nickname" << std::endl;
 
 	for (int i = 0; i < contact_count; ++i) {
-		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << contacts[i].get_first_name().substr(0,9) << "|";
-		std::cout << std::setw(10) << contacts[i].get_last_name().substr(0,9) << "|";
-		std::cout << std::setw(10) << contacts[i].get_phone_number().substr(0,9) << "|";
+		std::cout << std::setw(10) << i << ".";
+		std::cout << std::setw(10) << contacts[i].get_first_name().substr(0,9) << ".";
+		std::cout << std::setw(10) << contacts[i].get_last_name().substr(0,9) << ".";
+		std::cout << std::setw(10) << contacts[i].get_phone_number().substr(0,9) << ".";
 		std::cout << std::setw(10) << contacts[i].get_nickname().substr(0,9) << std::endl;
 	}
 
 	std::cout << "Enter index to view details: ";
-    std::string input;
-    std::getline(std::cin, input);
-    // int index;
+	std::string input;
+	int index = -1;
+	while (true) {
+		std::cout << "Enter index to view details: ";
+		std::getline(std::cin, input);
 
-	if (input.empty()) {
-        std::cout << "No input provided." << std::endl;
-        return;
-    }
-	
-		
+		bool is_number = true;
+		for (size_t i = 0; i < input.length(); i++) {
+			if (!isdigit(input[i])) {
+				is_number = false;
+				break ;
+			}
+		}
+
+		if (!is_number) {
+			std::cout << RED + "Invalid input. Please enter a valid index number." + RESET << std::endl;
+			continue ;
+		}
+
+		index = 0;
+		for (size_t i = 0; i < input.length(); i++) {
+			index = index * 10 + (input[i] - '0');
+		}
+
+		if (index < 0 || index >= contact_count) {			
+			std::cout << RED + "Invalid input. Please enter a valid index number." + RESET << std::endl;
+		}
+		else {
+			break ;
+		}
 	}
-  
 
+	display_contact(index);
+}
 
 void PhoneBook::display_contact(int index) const {
 	const Contact &contact = contacts[index];

@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:08:35 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/06 15:23:25 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:00:28 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <sstream> 
 #include "color.hpp"
 #include "Contact.hpp"
 #include <cctype>
+#include <string>
 
 class PhoneBook {
 private:
@@ -29,6 +31,7 @@ private:
 	bool is_empty(const std::string& str) const;
 	bool is_valid_number(const std::string& str) const;
 	bool is_alnum(const std::string& str) const;
+    std::string isValid(const std::string& prompt, bool numericOnly);
 
 public:
     PhoneBook();

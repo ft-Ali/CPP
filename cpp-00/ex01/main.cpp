@@ -6,17 +6,19 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:06:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/06 13:50:30 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 10:09:43 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "color.hpp"
 
-int main() {
+int main(int c, char** v) {
     PhoneBook phonebook;
     std::string command;
-
+    (void)v;
+    
+    if(c == 1) { 
     while (true) {
         std::cout << GRY2 + "Enter command (ADD, SEARCH, EXIT): " + RESET;
 		std::cin.clear();
@@ -31,9 +33,12 @@ int main() {
             break;
         } else {
             std::cout << "Invalid command." << std::endl;
+            }
         }
     }
-
+    else {
+        std::cout << RED1 + "Invalid arguments." + RESET << std::endl;
+    }
     return 0;
 }
 
