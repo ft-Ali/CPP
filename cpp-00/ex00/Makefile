@@ -4,7 +4,7 @@ CC          =   c++
 
 FLAG        =   -std=c++98 -Wall -Wextra -Werror -pedantic -g3
 
-C_FILES     = 	megaphone.cpp \
+C_FILES     = 	Megaphone.cpp \
 
 OBJ_DIR     =   builds
 

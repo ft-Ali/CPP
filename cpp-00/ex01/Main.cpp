@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:06:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/08 10:09:43 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:12:30 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
-#include "color.hpp"
+#include "PhoneBook.hpp"
+#include "Color.hpp"
 
 int main(int c, char** v) {
-    PhoneBook phonebook;
+    PhoneBook PhoneBook;
     std::string command;
     (void)v;
     
     if(c == 1) { 
     while (true) {
+		// if(std::cin.eof())
+		// 	break ;
         std::cout << GRY2 + "Enter command (ADD, SEARCH, EXIT): " + RESET;
 		std::cin.clear();
         std::getline(std::cin, command);
-		if(std::cin.eof())
+        if(std::cin.eof())
 			break ;
         if (command == "ADD") {
-            phonebook.add_contact();
+            PhoneBook.addContact();
         } else if (command == "SEARCH") {
-            phonebook.search_contacts();
+            PhoneBook.searchContacts();
         } else if (command == "EXIT") {
             break;
         } else {
-            std::cout << "Invalid command." << std::endl;
+            std::cout << RED1 + "Invalid command." + RESET << std::endl;
             }
         }
     }
@@ -62,8 +64,6 @@ commande. Le programme accepte les entrées suivantes : ADD, SEARCH et EXIT.
 ▪ Nom
 ▪ Surnom
 ▪ Numéro de téléphone
-▪ Adresse e-mail
-▪ Date de naissance
 ▪ Secret le plus sombre
 Si le répertoire est plein, le plus ancien contact est remplacé.
 •
