@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:47:31 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/09 13:23:46 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:33:05 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ Zombie::~Zombie() {
 }
 
 void Zombie::announce() const {
-	std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout <<  _name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
