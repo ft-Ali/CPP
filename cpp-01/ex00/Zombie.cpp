@@ -6,23 +6,19 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:47:31 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/09 11:57:21 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:23:46 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie() {
-	std::cout << BLUE + "Zombie created" + RESET << std::endl;
-	return ;
+Zombie::Zombie(const std::string name) : _name(name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << RED + "Zombie destroyed" + RESET << std::endl;
-	return ;
+	std::cout << "Zombie " << _name << " is dead" << std::endl;
 }
 
-void Zombie::printTest() {
-	std::cout << "Test constructor and destructor" << std::endl;
-	return ;
+void Zombie::announce() const {
+	std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
 }

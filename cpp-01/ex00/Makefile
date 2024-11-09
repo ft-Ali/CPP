@@ -4,7 +4,7 @@ CC          =   c++
 
 FLAG        =   -std=c++98 -Wall -Wextra -Werror -pedantic -g3
 
-C_FILES     = 	main.cpp Zombie.cpp \
+C_FILES     = 	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp \
 
 OBJ_DIR     =   builds
 

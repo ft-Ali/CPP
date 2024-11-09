@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:06:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/08 15:36:53 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:55:01 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int main(int c, char** v) {
     
     if(c == 1) { 
     while (true) {
-		// if(std::cin.eof())
-		// 	break ;
         std::cout << GRY2 + "Enter command (ADD, SEARCH, EXIT): " + RESET;
 		std::cin.clear();
         std::getline(std::cin, command);
-        if(std::cin.eof())
-			break ;
+         if (std::cin.eof() || std::cin.fail()) {
+                std::cout << "\nExiting..." << std::endl;
+                break;
+            }
         if (command == "ADD") {
             PhoneBook.addContact();
         } else if (command == "SEARCH") {

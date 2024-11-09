@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:08:35 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/08 14:03:57 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:02:54 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@
 
 class PhoneBook {
 private:
-    Contact Contacts[8];
-    int contactCount;
-    int oldestContactIndex;
+	Contact Contacts[8];
+	int contactCount;
+	int oldestContactIndex;
 	bool isEmpty(const std::string& str) const;
 	bool isValidNumber(const std::string& str) const;
 	bool isAlnum(const std::string& str) const;
-    std::string isValid(const std::string& prompt, bool numericOnly);
+	std::string isValid(const std::string& prompt, bool numericOnly);
 
 public:
-    PhoneBook();
+	PhoneBook();
 	~PhoneBook();
-    void addContact();
-    void searchContacts() const;
-    void displayContact(int index) const;
+	void addContact();
+	void searchContacts() const;
+	void displayContact(int index) const;
 };
 
 

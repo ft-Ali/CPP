@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:41:26 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/08 15:39:20 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:04:26 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ PhoneBook::PhoneBook() : contactCount(0), oldestContactIndex(0) {
 
 bool PhoneBook::isEmpty(const std::string &str) const {
 	return (str.empty());
+}
+
+std::string truncate(const std::string& str, std::size_t width) {
+    if (str.length() > width) {
+        return str.substr(0, width - 1) + ".";
+    }
+    return str;
 }
 
 bool PhoneBook::isAlnum(const std::string &str) const {
@@ -42,55 +49,65 @@ PhoneBook::~PhoneBook() {
 }
 
 std::string PhoneBook::isValid(const std::string& prompt, bool numericOnly) {
-    std::string input;
+	std::string input;
 
-    while (true) {
-        std::cout << prompt;
-        std::getline(std::cin, input);
+	while (true) {
+		std::cout << prompt;
+		std::getline(std::cin, input);
 		
 		if (std::cin.eof()) {
 			std::cin.clear();
-			return "";
+			break;
+		}
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore();
+			break;
 		}
 
 		if (isEmpty(input)) {
-            std::cout << RED + "Input is empty. Please try again." + RESET << std::endl;
-            continue;
-        }
-        if ((numericOnly && !isValidNumber(input)) || (!numericOnly && !isAlnum(input))) {
-            std::cout << RED + "Invalid input. Please try again." + RESET << std::endl;
-            continue;
-        }
-        break;
-    }
-
-    return input;
+			std::cout << RED + "Input is empty. Please try again." + RESET << std::endl;
+			continue;
+		}
+		if ((numericOnly && !isValidNumber(input)) || (!numericOnly && !isAlnum(input))) {
+			std::cout << RED + "Invalid input. Please try again." + RESET << std::endl;
+			continue;
+		}
+		break;
+	}
+	return input;
 }
 
 void PhoneBook::addContact() {
-    
 	Contact newContact;
 	std::string input;
-	
+    
+
 	input = isValid("Enter First Name: ", false);
-	if (!input.empty())
-		newContact.setFirstName(input);
-	
+	if (input.empty()) 
+		return;
+	newContact.setFirstName(input);
+
 	input = isValid("Enter Last Name: ", false);
-	if (!input.empty())
-		newContact.setLastName(input);
+	if (input.empty()) 
+		return;
+	newContact.setLastName(input);
 
 	input = isValid("Enter Nickname: ", false);
-	if (!input.empty())
-		newContact.setNickName(input);
+	if (input.empty()) 
+		return;
+	newContact.setNickName(input);
 
 	input = isValid("Enter Darkest Secret: ", false);
-	if (!input.empty())
-		newContact.setDarkestSecret(input);
+	if (input.empty()) 
+		return;
+	newContact.setDarkestSecret(input);
 
 	input = isValid("Enter Phone Number: ", true);
-	if (!input.empty()) 
-		newContact.setPhoneNumber(input);
+	if (input.empty()) 
+		return;
+	newContact.setPhoneNumber(input);
+
 	if (contactCount < 8) {
 		Contacts[contactCount++] = newContact;
 	} else {
@@ -98,7 +115,7 @@ void PhoneBook::addContact() {
 		oldestContactIndex = (oldestContactIndex + 1) % 8;
 	}
 	std::cout << TURQ + "Contact added successfully!" + RESET << std::endl;
-}	
+}
 
 void PhoneBook::searchContacts() const {
 	if (contactCount == 0) {
@@ -106,18 +123,20 @@ void PhoneBook::searchContacts() const {
 		return ;
 	}
 
-	std::cout << std::setw(10) << "Index" << "|";
-	std::cout << std::setw(10) << "First Name" << "|";
-	std::cout << std::setw(10) << "Last Name" << "|";
-	std::cout << std::setw(10) << "Phone Number" << "|\n";
+	std::cout << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Phone Number" << "|"
+              << std::setw(10) << "Nickname" << std::endl;
 
-	for (int i = 0; i < contactCount; ++i) {
-		std::cout << std::setw(10) << i << ".";
-		std::cout << std::setw(10) << Contacts[i].getFirstName().substr(0,9) << ".";
-		std::cout << std::setw(10) << Contacts[i].getLastName().substr(0,9) << ".";
-		std::cout << std::setw(10) << Contacts[i].getPhoneNumber().substr(0,9) << "."<< std::endl;
-	}
-
+	  for (int i = 0; i < contactCount; ++i) {
+        std::cout << std::setw(10) << i << "|"
+                  << std::setw(10) << truncate(Contacts[i].getFirstName(), 10) << "|"
+                  << std::setw(10) << truncate(Contacts[i].getLastName(), 10) << "|"
+                  << std::setw(10) << truncate(Contacts[i].getPhoneNumber(), 10) << "|"
+                  << std::setw(10) << truncate(Contacts[i].getNickName(), 10) << std::endl;
+    }
+	
 	std::string input;
 	int index = -1;
 	while (true) {
@@ -136,7 +155,6 @@ void PhoneBook::searchContacts() const {
 				index = input[i] - '0';
 				break;
 				}
-			
 		}
 		if (!isNumber) {
 			std::cout << RED + "Invalid input. Please enter a valid index number." + RESET << std::endl;

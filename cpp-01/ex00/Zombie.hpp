@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:37:21 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/09 11:59:21 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:30:04 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@
 #include <sstream>
 #include <cctype>
 #include <string>
+#include <fstream>
 
 class Zombie {
 	private:
 		std::string _name;
 
 	public:
-		Zombie();
+		Zombie(const std::string name);
 		~Zombie();
-		void printTest();
-		void announce();
+		void announce() const;
 };
 
+	void randomChump(const std::string name);
+	Zombie* newZombie(const std::string name);
 
 
 #endif
