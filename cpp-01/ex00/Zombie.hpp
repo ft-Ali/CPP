@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:37:21 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/09 13:30:04 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:36:03 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ class Zombie {
 		void announce() const;
 };
 
-	void randomChump(const std::string name);
 	Zombie* newZombie(const std::string name);
+	void randomChump(const std::string name);
 
 
 #endif
