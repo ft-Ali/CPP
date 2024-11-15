@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:15:54 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/13 15:39:27 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:38:29 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 
+//c_str sert a "convertir" une string dans un format c_string requi par fstream
 bool is_valid(std::string filename, std::string s1, std::string s2) {
 	if (s1.empty()) {
 		std::cerr << RED + "Error: cannot be empty." + RESET << std::endl;
