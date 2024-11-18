@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:47:24 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/18 17:36:38 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:47:03 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,90 @@ std::ostream &operator<<(std::ostream &o, Fixed const &rhs) {
 	o << rhs.toFloat(); // Outputs the float value of the Fixed object
 	std::cout << CYAN << "🖨️ [Operator<<] Outputting float value: " << rhs.toFloat() << RESET << std::endl;
 	return (o);
+}
+// ostream is a class that represents an output stream, and the << operator is an operator that takes an output stream and a value to output, and returns the output stream.
+
+/*********** Comparaison ***********/
+
+bool Fixed::operator>(const Fixed &rhs) const {
+    return this->_value > rhs.getRawBits();
+}
+
+bool Fixed::operator<(const Fixed &rhs) const {
+	return this->_value < rhs.getRawBits();
+}
+
+bool Fixed::operator>=(Fixed const &rhs) const {
+	return this->_value >= rhs.getRawBits();
+}
+
+bool Fixed::operator<=(Fixed const &rhs) const {
+	return this->_value <= rhs.getRawBits();
+}
+
+bool Fixed::operator==(Fixed const &rhs) const {
+	return this->_value == rhs.getRawBits();
+}
+
+bool Fixed::operator!=(Fixed const &rhs) const {
+	return this->_value != rhs.getRawBits();
+}
+ /*********** OPERATEUR ARITHMETIQUE ***********/
+
+Fixed Fixed::operator+(Fixed const &rhs) const {
+	return Fixed(this->toFloat() + rhs.toFloat());
+}
+
+Fixed Fixed::operator-(Fixed const &rhs) const {
+	return Fixed(this->toFloat() - rhs.toFloat());
+}
+
+Fixed Fixed::operator*(Fixed const &rhs) const {
+	return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed Fixed::operator/(Fixed const &rhs) const {
+	return Fixed(this->toFloat() / rhs.toFloat());
+}
+
+/*********** OPERATEUR D'INCREMENTATION ET DE DECREMENTATION ***********/
+
+Fixed &Fixed::operator++() {
+	this->_value++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed tmp(*this);
+	operator++();
+	return tmp;
+}
+
+Fixed &Fixed::operator--() {
+	this->_value--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed tmp(*this);
+	operator--();
+	return tmp;
+}
+
+/*********** FONCTIONS STATIQUES MIN/MAX ***********/
+
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+	return (a < b ? a : b); // Si A est plus petit que B alors on retourne A sinon on retourne B
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+	return (a > b ? a : b); // Si A est plus grand que B alors on retourne A sinon on retourne B
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+	return (a < b ? a : b); // Si A est plus petit que B alors on retourne A sinon on retourne B
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+	return (a > b ? a : b); // Si A est plus grand que B alors on retourne A sinon on retourne B
 }
