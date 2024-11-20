@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:47:24 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/18 17:47:03 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:35:25 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,24 +130,24 @@ Fixed Fixed::operator/(Fixed const &rhs) const {
 }
 
 /*********** OPERATEUR D'INCREMENTATION ET DE DECREMENTATION ***********/
-
-Fixed &Fixed::operator++() {
+// prefix incrementation
+Fixed &Fixed::operator++() { // ++i
 	this->_value++;
 	return *this;
 }
 
-Fixed Fixed::operator++(int) {
+Fixed &Fixed::operator--() { // --i
+	this->_value--;
+	return *this;
+}
+// postfix incrementation
+Fixed Fixed::operator++(int) { // i++
 	Fixed tmp(*this);
 	operator++();
 	return tmp;
 }
 
-Fixed &Fixed::operator--() {
-	this->_value--;
-	return *this;
-}
-
-Fixed Fixed::operator--(int) {
+Fixed Fixed::operator--(int) { // i--
 	Fixed tmp(*this);
 	operator--();
 	return tmp;
