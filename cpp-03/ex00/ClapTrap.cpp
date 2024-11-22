@@ -6,22 +6,63 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/20 17:29:42 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:55:12 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()  {
-	std::cout << "contructor" << std::endl;
+ClapTrap::ClapTrap() {
+	std::cout << GRY1 << "⚙️ " << RESET << GRNN << "[Default Constructor] " << RESET << "A ClapTrap has been constructed!" << std::endl;
 }
 
-ClapTrap::~ClapTrap()  {
-	std::cout << "destructor" << std::endl;
+ClapTrap::ClapTrap(const std::string name) {
+	std::cout << GRY1 << "✨ " << RESET << CYAN << "[Parameterized Constructor] " << RESET << "Creating ClapTrap: " << BLUE << name << RESET << std::endl;
+	this->_name = name;
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &src) {
+	std::cout << GRY1 << "🔄 " << RESET << PURP << "[Copy Constructor] " << RESET << "Cloning ClapTrap: " << BLUE << src._name << RESET << std::endl;
+	*this = src;
+}
 
-void attack(const std::string& target);
-void takeDamage(unsigned int amount);
-void beRepaired(unsigned int amount);
-		
+ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+	std::cout << GRY1 << "🔄 " << RESET << GOLD << "[Assignment Operator] " << RESET << "Assigning ClapTrap: " << BLUE << src._name << RESET << std::endl;
+	if (this != &src) {
+		this->_name = src._name;
+		this->_hitPoints = src._hitPoints;
+		this->_energyPoints = src._energyPoints;
+		this->_attackDamage = src._attackDamage;
+	}
+	return (*this);
+}
+
+ClapTrap::~ClapTrap() {
+	std::cout << GRY1 << "💥 " << RESET << RED << "[Destructor] " << RESET << "Destroying ClapTrap: " << BLUE << this->_name << RESET << std::endl;
+}
+
+void ClapTrap::info() {
+	std::cout << GRY1 << "🔎 " << RESET << CYAN << "[Info] " << RESET << "ClapTrap Details:" << std::endl;
+	std::cout << "  " << MAGN << "Name: " << RESET << BLUE << this->_name << RESET << std::endl;
+	std::cout << "  " << YLLW << "Hit Points: " << RESET << GRNN << this->_hitPoints << RESET << std::endl;
+	std::cout << "  " << LIME << "Energy Points: " << RESET << GRNN << this->_energyPoints << RESET << std::endl;
+	std::cout << "  " << ORNG << "Attack Damage: " << RESET << RED << this->_attackDamage << RESET << std::endl;
+}
+
+void ClapTrap::attack(const std::string &target) {
+	std::cout << GRY1 << "⚔️  " << RESET << GOLD << "[Attack] " << RESET;
+	if (this->_energyPoints <= 0) {
+		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has no energy points left and cannot attack!" << RESET << std::endl;
+	}
+	else if (this->_hitPoints <= 0) {
+		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has no hit points left and cannot attack!" << RESET << std::endl;
+	}
+	else {
+		std::cout << BLUE << this->_name << RESET << " attacks " << PINK << target << RESET << ", causing " << RED << this->_attackDamage << RESET << " points of damage !" << std::endl;
+						this->_energyPoints--;
+	}
+	info();
+}

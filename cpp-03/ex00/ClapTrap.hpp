@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:16:39 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/20 17:32:50 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:35:37 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,14 @@ class ClapTrap {
 		int _attackDamage;
 	public:
 		ClapTrap();
+		ClapTrap(const std::string name); // Constructor
+		ClapTrap(const ClapTrap &src); // Copy constructor
+		ClapTrap &operator=(const ClapTrap &src); // Assignment operator
 		~ClapTrap();
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+		void info();
 
 };
 
