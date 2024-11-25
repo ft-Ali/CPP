@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/22 11:55:12 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:41:45 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ ClapTrap::~ClapTrap() {
 }
 
 void ClapTrap::info() {
+	std::cout << "=================================================" << std::endl;
 	std::cout << GRY1 << "🔎 " << RESET << CYAN << "[Info] " << RESET << "ClapTrap Details:" << std::endl;
 	std::cout << "  " << MAGN << "Name: " << RESET << BLUE << this->_name << RESET << std::endl;
 	std::cout << "  " << YLLW << "Hit Points: " << RESET << GRNN << this->_hitPoints << RESET << std::endl;
 	std::cout << "  " << LIME << "Energy Points: " << RESET << GRNN << this->_energyPoints << RESET << std::endl;
 	std::cout << "  " << ORNG << "Attack Damage: " << RESET << RED << this->_attackDamage << RESET << std::endl;
 }
+
 
 void ClapTrap::attack(const std::string &target) {
 	std::cout << GRY1 << "⚔️  " << RESET << GOLD << "[Attack] " << RESET;
@@ -66,3 +68,31 @@ void ClapTrap::attack(const std::string &target) {
 	}
 	info();
 }
+
+void ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << GRY1 << "🛡️ " << RESET << RED << "[Take Damage] " << RESET;
+	if (this->_hitPoints <= 0) {
+		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has no hit points left and cannot take any more damage!" << RESET << std::endl;
+	}
+	else {
+		std::cout << BLUE << this->_name << RESET << " takes " << RED << amount << RESET << " points of damage !" << std::endl;
+		this->_hitPoints -= amount;
+	}
+	this->_hitPoints -= amount;
+	if(this->_hitPoints < 0)
+		this->_hitPoints = 0;
+	info();
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+	std::cout << GRY1 << "🔧 " << RESET << GRNN << "[Be Repaired] " << RESET;
+	if (this->_hitPoints >= 10) {
+		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has full hit points and cannot be repaired!" << RESET << std::endl;
+	}
+	else {
+		std::cout << BLUE << this->_name << RESET << " is being repaired for " << GRNN << amount << RESET << " points !" << std::endl;
+		this->_hitPoints += amount;
+	}
+	info();
+}
+
