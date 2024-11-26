@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:29 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:57:28 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:07:11 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main() {
 
     scav.info();
     scav.attack("ClapTrap");
-    clap.takeDamage(10);
+    clap.takeDamage(20);
     scav.guardGate();
     clap.beRepaired(5);
     clap.info();

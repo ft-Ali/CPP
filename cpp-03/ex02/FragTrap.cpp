@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:25:13 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:55:05 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:08:22 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ FragTrap::FragTrap() {
 }
 
 FragTrap::~FragTrap() {
-	std::cout << GRY1 << "🔧 " << RESET << RED << "[Destructor] " << RESET << "FragTrap: " << BLUE << this->_name << RESET << " has been destroyed!" << std::endl;
+	std::cout << GRY1 << "🔧 " << RESET << RED << "[Destructor FragTrap] " << RESET << "FragTrap: " << BLUE << this->_name << RESET << " has been destroyed!" << std::endl;
 }
 
 FragTrap::FragTrap(const std::string name) {
