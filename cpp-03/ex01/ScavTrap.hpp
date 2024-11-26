@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 17:20:29 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:28 by alsiavos         ###   ########.fr       */
+/*   Created: 2024/11/26 10:21:33 by alsiavos          #+#    #+#             */
+/*   Updated: 2024/11/26 11:02:46 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "ClapTrap.hpp"
 
-int main() {
-	ClapTrap clap("ClapTrap");
-	ClapTrap clap2("ClapTrap2");
-	ClapTrap clap3("ClapTrap3");
-
-	clap.info();
-	clap2.info();
-	clap3.info();
-
-	clap.attack("ClapTrap2");
-	clap2.takeDamage(4);
-	clap2.beRepaired(1);
-
-	clap.info();
-	clap2.info();
-	clap3.info();
-
-	return (0);
-}
-
+class ScavTrap : public ClapTrap {
+	public:
+		ScavTrap();
+		ScavTrap(const std::string name);
+		ScavTrap(const ScavTrap &src);
+		ScavTrap &operator=(const ScavTrap &src);
+		~ScavTrap();
+		void guardGate();
+		void attack(const std::string& target);
+};

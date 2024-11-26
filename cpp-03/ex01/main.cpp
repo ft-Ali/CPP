@@ -6,29 +6,29 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:29 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:28 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:04:45 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main() {
-	ClapTrap clap("ClapTrap");
-	ClapTrap clap2("ClapTrap2");
-	ClapTrap clap3("ClapTrap3");
+int	main(void) {
+    ClapTrap clap("ClapTrap");
+    ScavTrap scav("ScavTrap");
 
-	clap.info();
-	clap2.info();
-	clap3.info();
+    clap.info();
+    scav.info();
+    clap.attack("ScavTrap");
+    clap.takeDamage(0);
 
-	clap.attack("ClapTrap2");
-	clap2.takeDamage(4);
-	clap2.beRepaired(1);
+    scav.info();
+    scav.attack("ClapTrap");
+    clap.takeDamage(20);
+    scav.guardGate();
+    clap.beRepaired(5);
+    clap.info();
+    scav.info();
 
-	clap.info();
-	clap2.info();
-	clap3.info();
-
-	return (0);
+    return (0);
 }
-

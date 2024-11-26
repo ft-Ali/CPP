@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:05 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:17:40 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void ClapTrap::info() {
 	std::cout << "  " << ORNG << "Attack Damage: " << RESET << RED << this->_attackDamage << RESET << std::endl;
 }
 
+
 void ClapTrap::attack(const std::string &target) {
 	std::cout << GRY1 << "⚔️  " << RESET << GOLD << "[Attack] " << RESET;
 	if (this->_energyPoints <= 0) {
@@ -74,6 +75,8 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		return ;
 	}
 	std::cout << GRY1 << "🛡️ " << RESET << RED << "[Take Damage] " << RESET;
+	
+	
 	if (this->_hitPoints <= 0) {
 		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has no hit points left and cannot take any more damage!" << RESET << std::endl;
 	}
@@ -87,29 +90,18 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << GRY1 << "🔧 " << RESET << GRNN << "[Be Repaired] " << RESET;
 	if((int)amount < 0) {
 		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " cannot take negative repair!" << RESET << std::endl;
 		return ;
 	}
+	std::cout << GRY1 << "🔧 " << RESET << GRNN << "[Be Repaired] " << RESET;
 	if (this->_hitPoints >= 10) {
 		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has full hit points and cannot be repaired!" << RESET << std::endl;
-	}
-	if (amount < 0) {
-		std::cout << RED << "Invalid amount of repair points!" << RESET << std::endl;
-		return ;
-	}
-	if (this->_hitPoints < 0) {
-		this->_hitPoints = 0;
-		return ;
-	}
-	if (this->_energyPoints < 0) {
-		this->_energyPoints = 0;
-		return ;
 	}
 	else {
 		std::cout << BLUE << this->_name << RESET << " is being repaired for " << GRNN << amount << RESET << " points !" << std::endl;
 		this->_hitPoints += amount;
 	}
-	info();
+	// info();
 }
+

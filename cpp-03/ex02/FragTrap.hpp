@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 17:20:29 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:28 by alsiavos         ###   ########.fr       */
+/*   Created: 2024/11/26 15:25:24 by alsiavos          #+#    #+#             */
+/*   Updated: 2024/11/26 15:53:32 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "ClapTrap.hpp"
 
-int main() {
-	ClapTrap clap("ClapTrap");
-	ClapTrap clap2("ClapTrap2");
-	ClapTrap clap3("ClapTrap3");
-
-	clap.info();
-	clap2.info();
-	clap3.info();
-
-	clap.attack("ClapTrap2");
-	clap2.takeDamage(4);
-	clap2.beRepaired(1);
-
-	clap.info();
-	clap2.info();
-	clap3.info();
-
-	return (0);
-}
-
+class FragTrap : public ClapTrap {
+	public:
+		FragTrap();
+		FragTrap(const std::string name);
+		FragTrap(const FragTrap &src);
+		FragTrap &operator=(const FragTrap &src);
+		~FragTrap();
+		void highFivesGuys(void);
+		void attack(const std::string &target);
+};
