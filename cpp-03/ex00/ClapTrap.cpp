@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:05 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:21:02 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,29 +87,18 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << GRY1 << "🔧 " << RESET << GRNN << "[Be Repaired] " << RESET;
 	if((int)amount < 0) {
 		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " cannot take negative repair!" << RESET << std::endl;
 		return ;
 	}
+	std::cout << GRY1 << "🔧 " << RESET << GRNN << "[Be Repaired] " << RESET;
 	if (this->_hitPoints >= 10) {
 		std::cout << RED << "ClapTrap " << BLUE << this->_name << RESET << RED << " has full hit points and cannot be repaired!" << RESET << std::endl;
-	}
-	if (amount < 0) {
-		std::cout << RED << "Invalid amount of repair points!" << RESET << std::endl;
-		return ;
-	}
-	if (this->_hitPoints < 0) {
-		this->_hitPoints = 0;
-		return ;
-	}
-	if (this->_energyPoints < 0) {
-		this->_energyPoints = 0;
-		return ;
 	}
 	else {
 		std::cout << BLUE << this->_name << RESET << " is being repaired for " << GRNN << amount << RESET << " points !" << std::endl;
 		this->_hitPoints += amount;
+		this->_energyPoints--;
 	}
-	info();
+	// info();
 }

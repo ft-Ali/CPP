@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:29 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:16:28 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:21:16 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main() {
 	clap3.info();
 
 	clap.attack("ClapTrap2");
-	clap2.takeDamage(4);
-	clap2.beRepaired(1);
+	clap2.takeDamage(9);
+	clap2.beRepaired(5);
 
 	clap.info();
 	clap2.info();

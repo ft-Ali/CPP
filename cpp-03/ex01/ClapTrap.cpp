@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:20:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/26 15:17:40 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:21:32 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	else {
 		std::cout << BLUE << this->_name << RESET << " is being repaired for " << GRNN << amount << RESET << " points !" << std::endl;
 		this->_hitPoints += amount;
+		this->_energyPoints--;
 	}
 	// info();
 }
