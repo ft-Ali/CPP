@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 18:43:31 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/27 14:27:34 by alsiavos         ###   ########.fr       */
+/*   Created: 2024/11/27 11:25:45 by alsiavos          #+#    #+#             */
+/*   Updated: 2024/11/27 14:08:21 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-# include "Color.hpp"
-# include <fstream>
-# include <iostream>
-# include <string>
+# include "Animal.hpp"
 
-class Animal {
-	protected:
-		std::string _type;
-	public: 
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &src);
-		Animal &operator=(const Animal &src);
-		virtual ~Animal();
+class Dog : public Animal {
+	public:
+		Dog();
+		virtual ~Dog();
+		Dog(const Dog &src);
+		Dog &operator=(const Dog &src);
 		virtual void makeSound() const;
 		std::string getType() const;
 };
-
 
 #endif
