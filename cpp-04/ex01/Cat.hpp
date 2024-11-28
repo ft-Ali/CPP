@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:38:09 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/27 15:48:50 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:24:05 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Cat : public Animal {
 		Cat &operator=(const Cat &src);
 		virtual void makeSound() const;
 		std::string getType() const;
+		std::string getIdea(int index) const;
+		void setIdea(int index, std::string idea);
 };
 
 #endif

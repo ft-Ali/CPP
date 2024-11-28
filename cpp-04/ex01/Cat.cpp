@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:38:02 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/27 15:50:33 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:51:24 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ Cat::Cat(const Cat &src) {
 
 Cat &Cat::operator=(const Cat &src) {
 	if (this != &src) {	
+		delete [] _brain;
+		_brain = new Brain(*src._brain);
 		_type = src._type;
 	 	std::cout << ORNG << "✍️  Cat Copy Assignment Operator called" << RESET << std::endl;
 	}
@@ -45,3 +47,24 @@ std::string Cat::getType() const {
               << CYAN << _type << RESET << std::endl;
 	return _type;
 }
+
+std::string Cat::getIdea(int index) const {
+	if(index < 0 || index > 100) {
+		std::cout << "🧠 Invalid index" << std::endl;		
+		return NULL;
+	}
+	return _brain->getIdea(index);
+}
+
+void Cat::setIdea(int index, std::string idea) {
+	if(idea.empty()){
+		std::cout << "🧠 Idea is empty" << std::endl;
+		return ;
+	}
+	if(index < 0 || index > 100) {
+		std::cout << "🧠 Invalid index" << std::endl;		
+		return ;
+	}
+	_brain->setIdea(index, idea);
+}
+

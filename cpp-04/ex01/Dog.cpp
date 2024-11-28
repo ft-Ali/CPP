@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:50:05 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/27 17:21:45 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:51:01 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ Dog::Dog(const Dog &src) {
 
 Dog &Dog::operator=(const Dog &src) {
 	if (this != &src) {
+		delete [] _brain;
+		_brain = new Brain(*src._brain);
 		_type = src._type;
 		std::cout << ORNG << "✍️  Dog Copy Assignment Operator called" << RESET << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:51:49 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/11/27 17:19:30 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:01:04 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 Brain::Brain() {
 	std::cout << GRNN << "🧠 Brain Default Constructor called" << RESET << std::endl;
-	for (int i = 0; i <= 100; i++) {
-		_ideas[i] = "🤔";
+	for (int i = 0; i < 100; i++) {
+		_ideas[i] = "🧠 Empty Idea";
 	}
 }
 
 Brain::Brain(const Brain &src) {
-	*this = src;
+	 for (int i = 0; i < 100; i++) {
+		_ideas[i] = src._ideas[i];
+    }
 	std::cout << BLUE << "🔄 Brain Copy Constructor called" << RESET << std::endl;
 }
 
@@ -55,9 +57,9 @@ std::string Brain::getIdea(int index) const {
 	
 	std::cout << "🧠 Idea at index " << index << ": " << _ideas[index] << std::endl;
 	
-	if(index < 0 || index > 100){
+	if(index < 0 || index > 100) {
 		std::cout << "🧠 Invalid index" << std::endl;		
-		return ;
+		return NULL;
 	}
 	return _ideas[index];
 }
