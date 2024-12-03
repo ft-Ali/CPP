@@ -1,10 +1,10 @@
-NAME        =   AbstractAnimal
+NAME        =   a.out
 
 CC          =   c++
 
 FLAG        =   -std=c++98 -Wall -Wextra -Werror -pedantic -g3
 
-C_FILES     = 	main.cpp \
+C_FILES     = 	main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp \
 
 OBJ_DIR     =   builds
 
