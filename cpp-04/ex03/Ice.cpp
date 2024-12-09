@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:37:11 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/12/03 16:34:30 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:38:52 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void Ice::use(ICharacter& target) {
 }
 
 Ice::~Ice() {
+	
 }

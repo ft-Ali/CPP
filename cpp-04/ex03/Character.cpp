@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:47:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/12/03 17:19:12 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:37:11 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,6 @@ void Character::use(int idx, ICharacter& target) {
 		return;
 	}
 
-	if(_materia[idx] == NULL){
-		std::cout << "No materia in slot " << idx << std::endl;
-		return;
-	}
 	else 
     	_inventory[idx]->use(target);
 	

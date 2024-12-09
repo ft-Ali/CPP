@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:27:11 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/12/03 16:42:29 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:39:56 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main(void) {
 
  
     std::cout << BOLD << ORNG << "🔄 Unequipping Ice Materia and re-equipping it..." << RESET << std::endl;
-    // me->unequip(0);
-    // me->equip(tmp);
+    me->unequip(0);
+    me->equip(tmp);
 
 
     std::cout << BOLD << RED << "🗑️ Cleaning up..." << RESET << std::endl;
