@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:02:50 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/12/03 16:34:05 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/12/24 14:27:17 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ AMateria::AMateria(const AMateria &src) {
 }
 
 AMateria &AMateria::operator=(const AMateria &src) {
-	if (this == &src) {
-		return *this;
-	}
-	_type = src._type;
+	(void)src;
 	return *this;
 }
 
@@ -37,4 +34,5 @@ void AMateria::use(ICharacter& target) {
 }
 
 AMateria::~AMateria() {
+	
 }

@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:00:00 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/12/03 11:21:19 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/12/24 15:37:02 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,11 @@ class ICharacter {
 
 
 #endif
+
+
+/***
+* Interface for the Character class
+* Interface means that the class is not implemented, only the methods are declared
+* met
+
+*/
