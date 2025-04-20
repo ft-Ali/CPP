@@ -1,21 +1,22 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
+// Constructors / Destructor
 AForm::AForm(const std::string &name, int signGrade, int execGrade)
-    : _name(name), _signGrade(signGrade), _execGrade(execGrade), _isSigned(false)
-{
-    if (signGrade < 1 || execGrade < 1)
-        throw GradeTooHighException();
-    if (signGrade > 150 || execGrade > 150)
-        throw GradeTooLowException();
+    : _name(name), _signGrade(signGrade), _execGrade(execGrade), _isSigned(false) {
+    if (_signGrade < 1 || _execGrade < 1)
+        throw AForm::GradeTooHighException();
+    if (_signGrade > 150 || _execGrade > 150)
+        throw AForm::GradeTooLowException();
 }
 
-AForm::~AForm() {}
+AForm::AForm()
+    : _name("Default"), _signGrade(150), _execGrade(150), _isSigned(false) {}
 
 AForm::AForm(const AForm &src)
-    : _name(src._name), _signGrade(src._signGrade), _execGrade(src._execGrade), _isSigned(src._isSigned)
-{
-}
+    : _name(src._name), _signGrade(src._signGrade), _execGrade(src._execGrade), _isSigned(src._isSigned) {}
+
+AForm::~AForm() {}
 
 AForm &AForm::operator=(const AForm &rhs) {
     if (this != &rhs) {
@@ -24,40 +25,23 @@ AForm &AForm::operator=(const AForm &rhs) {
     return *this;
 }
 
-const std::string AForm::getName() const {
-    return _name;
-}
+// Accessors
+const std::string AForm::getName() const { return _name; }
 
-int AForm::getSignGrade() const {
-    return _signGrade;
-}
+int AForm::getSignGrade() const { return _signGrade; }
 
-int AForm::getExecGrade() const {
-    return _execGrade;
-}
+int AForm::getExecGrade() const { return _execGrade; }
 
-bool AForm::isSigned() const {
-    return _isSigned;
-}
+bool AForm::isSigned() const { return _isSigned; }
 
+// Sign method
 void AForm::beSigned(const Bureaucrat &bureaucrat) {
     if (bureaucrat.getGrade() > _signGrade)
-        throw GradeTooLowException();
+        throw AForm::GradeTooLowException();
     _isSigned = true;
 }
 
-const char *AForm::GradeTooHighException::what() const throw() {
-    return "Grade too high.";
-}
-
-const char *AForm::GradeTooLowException::what() const throw() {
-    return "Grade too low.";
-}
-
-const char *AForm::FormNotSignedException::what() const throw() {
-    return "Form is not signed.";
-}
-
+// Operator overload
 std::ostream &operator<<(std::ostream &o, AForm const &form) {
     o << "Form: " << form.getName()
       << ", sign grade: " << form.getSignGrade()
