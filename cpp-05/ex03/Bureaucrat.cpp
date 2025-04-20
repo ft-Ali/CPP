@@ -11,8 +11,6 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
-
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src._name), _grade(src._grade) {}
 
 void Bureaucrat::incrementGrade() {

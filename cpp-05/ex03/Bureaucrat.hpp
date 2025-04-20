@@ -2,13 +2,13 @@
 
 #include <string>
 #include <iostream>
+class Form;
 
 class Bureaucrat {
         private:
             std::string const _name;
             int _grade;
         public:
-            Bureaucrat();
             Bureaucrat(std::string const name, int grade);
             Bureaucrat(Bureaucrat const & src);
             Bureaucrat & operator=(Bureaucrat const & src);
@@ -17,6 +17,7 @@ class Bureaucrat {
             int getGrade() const;
             void incrementGrade();
             void decrementGrade();
+            void signForm(Form & form);
             class GradeTooHighException : public std::exception {
                 public:
                     virtual const char* what() const throw();

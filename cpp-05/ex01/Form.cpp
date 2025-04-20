@@ -10,6 +10,9 @@ Form::Form(const std::string &name, int signGrade, int execGrade)
     }
 }
 
+Form::Form()
+    : _name("Default"), _signGrade(150), _execGrade(150), _isSigned(false) {}
+
 Form::~Form() {}
 
 Form::Form(const Form &src)

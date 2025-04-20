@@ -10,6 +10,8 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(
 
 Bureaucrat::~Bureaucrat() {}
 
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {}
+
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src._name), _grade(src._grade) {}
 
 void Bureaucrat::incrementGrade() {
@@ -52,4 +54,11 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat::GradeTooHighException co
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat::GradeTooLowException const & src) {
     return o << src.what();
+}
+
+Bureaucrat & Bureaucrat::operator=(Bureaucrat const & src) {
+    if (this != &src) {
+        this->_grade = src._grade;
+    }
+    return *this;
 }

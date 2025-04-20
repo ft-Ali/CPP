@@ -13,6 +13,7 @@ class Form {
     public:
         Form(const std::string &name, int signGrade, int execGrade);
         Form(const Form &src);
+        Form();
         ~Form();
         Form &operator=(const Form &rhs);
         const std::string getName() const;
