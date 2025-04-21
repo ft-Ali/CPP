@@ -49,3 +49,10 @@ std::ostream &operator<<(std::ostream &o, AForm const &form) {
       << ", signed: " << (form.isSigned() ? "yes" : "no");
     return o;
 }
+
+void AForm::execute(Bureaucrat const &executor) const {
+    if (!this->isSigned())
+        throw AForm::FormNotSignedException();
+    if (executor.getGrade() > this->getExecGrade())
+        throw AForm::GradeTooLowException();
+}

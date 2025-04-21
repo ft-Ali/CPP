@@ -6,7 +6,7 @@ FLAG        =   -std=c++98 -Wall -Wextra -Werror -g3
 
 C_FILES     = 	main.cpp Bureaucrat.cpp AForm.cpp \
 				ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp
+				PresidentialPardonForm.cpp Intern.cpp
 
 OBJ_DIR     =   builds
 
