@@ -24,7 +24,7 @@ static AForm* createRobotomy(const std::string &target) {
     return new RobotomyRequestForm(target);
 }
 
- AForm* createPardon(const std::string &target) {
+static AForm* createPardon(const std::string &target) {
     return new PresidentialPardonForm(target);
 }
 
