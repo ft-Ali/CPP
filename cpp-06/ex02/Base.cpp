@@ -52,23 +52,27 @@ void identify(Base* p) {
 // If the cast fails, it will throw an exception
 void identify(Base& p) {
     // We'll use a try-catch block for each possible type
+    // Catch std::exception instead of std::bad_cast to avoid including typeinfo
     try {
-        (void)dynamic_cast<A&>(p);
+        A& a = dynamic_cast<A&>(p);
+        (void)a; // Avoid unused variable warning
         std::cout << "A" << std::endl;
         return;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception&) {}
     
     try {
-        (void)dynamic_cast<B&>(p);
+        B& b = dynamic_cast<B&>(p);
+        (void)b; // Avoid unused variable warning
         std::cout << "B" << std::endl;
         return;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception&) {}
     
     try {
-        (void)dynamic_cast<C&>(p);
+        C& c = dynamic_cast<C&>(p);
+        (void)c; // Avoid unused variable warning
         std::cout << "C" << std::endl;
         return;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception&) {}
     
     std::cout << "Unknown type" << std::endl;
 }
