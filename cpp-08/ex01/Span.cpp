@@ -23,15 +23,15 @@ void Span::addNumber(int number) {
     _numbers.push_back(number);
 }
 
-unsigned int Span::shortestSpan() const {
+int Span::shortestSpan() const {
     if (_numbers.size() < 2) {
         throw std::length_error("Not enough numbers to find a span");
     }
     std::vector<int> sorted(_numbers);
     std::sort(sorted.begin(), sorted.end());
-    unsigned int minSpan = static_cast<unsigned int>(sorted[1] - sorted[0]);
+    int minSpan = sorted[1] - sorted[0];
     for (size_t i = 2; i < sorted.size(); ++i) {
-        unsigned int span = static_cast<unsigned int>(sorted[i] - sorted[i - 1]);
+        int span = sorted[i] - sorted[i - 1];
         if (span < minSpan) {
             minSpan = span;
         }
@@ -39,11 +39,11 @@ unsigned int Span::shortestSpan() const {
     return minSpan;
 }
 
-unsigned int Span::longestSpan() const {
+int Span::longestSpan() const {
     if (_numbers.size() < 2) {
         throw std::length_error("Not enough numbers to find a span");
     }
     int minVal = *std::min_element(_numbers.begin(), _numbers.end());
     int maxVal = *std::max_element(_numbers.begin(), _numbers.end());
-    return static_cast<unsigned int>(maxVal - minVal);
+    return maxVal - minVal;
 }

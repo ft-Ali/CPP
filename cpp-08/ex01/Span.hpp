@@ -24,8 +24,8 @@ public:
         _numbers.insert(_numbers.end(), begin, end);
     }
 
-    unsigned int shortestSpan() const;
-    unsigned int longestSpan() const;
+    int shortestSpan() const;
+    int longestSpan() const;
 
 private:
     unsigned int      _N;
